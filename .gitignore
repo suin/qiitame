@@ -1,7 +1,5 @@
 .DS_Store
 /.idea
 .phpmake
-/vendor
 /composer.phar
-/composer.lock
 /metrics

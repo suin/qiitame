@@ -2,37 +2,43 @@
 
 [![Build Status](https://secure.travis-ci.org/suin/qiitame.png?branch=master)](https://travis-ci.org/suin/qiitame)
 
+Qiitaプロフィールページの7文字削減短縮URL
+
 ## What is Qiitame?
 
-editing...
+Qiita のプロフィールページを自己紹介に書きたい!
+でも URL に users と入っててオシャレじゃない。
+名刺に印刷したいけど文字数足りない。
+Bitlyを使うのはちょっと...。
+そんな人のための Qiita プロフィールページ専用短縮URLサービスです。
+
+ふつうのURL: http://qiita.com/users/suin
+短縮URL: http://qiita.me/suin
+
 
 ## Requirements
 
-editing...
+* PHP 5.3 or later
 
 ## Installation
 
-Install composer in your project:
+Checkout master source code from github:
 
 ```
-curl -s http://getcomposer.org/installer | php
+hub clone suin/qiitame
 ```
 
-Create a `composer.json` file in your project root:
+## How to Use
 
-```json
-{
-    "require": {
-        "suin/qiitame": "*"
-    }
-}
-```
-
-Install via composer:
+Run PHP built-in server:
 
 ```
-php composer.phar install
+cd web
+php -S 0.0.0.0:8000
 ```
+
+Then open http://localhost:8000 with your browser.
+
 
 ## License
 
@@ -45,30 +51,12 @@ editing...
 
 ## Contributing
 
+このプロジェクトはMITライセンスで公開されています。PullRequest・パッチの提供などはそれらがMITライセンスによりライセンシングされることに同意したと見なしますので予めご了承下さい。
+
 Checkout master source code from github:
 
 ```
 hub clone suin/qiitame
-```
-
-Install develpment components via composer:
-
-```
-# If you don't have composer.phar
-./scripts/bundle-devtools.sh .
-
-# If you have composer.phar
-composer.phar install --dev
-```
-
-### Unit Testing
-
-We works under test driven development.
-
-Run phpunit:
-
-```
-./vendor/bin/phpunit
 ```
 
 ### Coding Standard
@@ -80,6 +68,15 @@ Check if your codes follows PSR-2 by phpcs:
 ```
 ./vendor/bin/phpcs --standard=PSR2 src/
 ```
+
+### vendorアップデートルール
+
+このプロジェクトではビルド環境の再現性をより高めておくためにビルドに必要なツール類もすべてリポジトリに入れて管理する **密封ビルド環境(hermetic build environment)** を実践しています。`vendor` 以下もリポジトリに登録されています。composerでアップデートをかける必要がある場合は、`--prefer-dist` オプションをつけて実行してください。これにより、`vendor` 以下がgitでステージできるようになります。
+
+```
+composer.phar update --prefer-dist
+```
+
 
 ## Acknowledgement
 
